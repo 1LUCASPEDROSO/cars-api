@@ -14,7 +14,7 @@ public class Car {
     @JoinColumn(name="model_id")
     private Model model;
     private Integer year;
-    private Double gas;
+    private String gas_type;
     private Integer numDoors;
     private String color;
 
@@ -53,12 +53,12 @@ public class Car {
         this.year = year;
     }
 
-    public Double getGas() {
-        return gas;
+    public String getGas_type() {
+        return gas_type;
     }
 
-    public void setGas(Double gas) {
-        this.gas = gas;
+    public void setGas_type(String gas_type) {
+        this.gas_type = gas_type;
     }
 
     public Integer getNumDoors() {
