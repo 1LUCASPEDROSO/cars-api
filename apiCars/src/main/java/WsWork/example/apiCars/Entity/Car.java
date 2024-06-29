@@ -2,20 +2,24 @@ package WsWork.example.apiCars.Entity;
 
 import jakarta.persistence.*;
 import jdk.jfr.Timestamp;
+
+import java.util.Date;
+
 @Entity
 @Table(name="car")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Timestamp
-    private String register_date;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(columnDefinition = "TIMESTAMP")
+    private Date register_date;
     @ManyToOne
     @JoinColumn(name="model_id")
     private Model model;
     private Integer year;
     private String gas_type;
-    private Integer numDoors;
+    private Integer num_Doors;
     private String color;
 
     public Car() {
@@ -29,12 +33,20 @@ public class Car {
         this.id = id;
     }
 
-    public String getRegister_date() {
+    public Date getRegister_date() {
         return register_date;
     }
 
-    public void setRegister_date(String register_date) {
+    public void setRegister_date(Date register_date) {
         this.register_date = register_date;
+    }
+
+    public Integer getNum_Doors() {
+        return num_Doors;
+    }
+
+    public void setNum_Doors(Integer num_Doors) {
+        this.num_Doors = num_Doors;
     }
 
     public Model getModel() {
@@ -61,13 +73,6 @@ public class Car {
         this.gas_type = gas_type;
     }
 
-    public Integer getNumDoors() {
-        return numDoors;
-    }
-
-    public void setNumDoors(Integer numDoors) {
-        this.numDoors = numDoors;
-    }
 
     public String getColor() {
         return color;
