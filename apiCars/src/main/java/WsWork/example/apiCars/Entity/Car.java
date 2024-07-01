@@ -3,7 +3,6 @@ package WsWork.example.apiCars.Entity;
 import jakarta.persistence.*;
 import jdk.jfr.Timestamp;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -22,8 +21,6 @@ public class Car {
     private String gas_type;
     private Integer num_Doors;
     private String color;
-    private String name;
-    private BigDecimal value;
 
     public Car() {
     }
@@ -83,21 +80,5 @@ public class Car {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getValue() {
-        return value;
-    }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
     }
 }
