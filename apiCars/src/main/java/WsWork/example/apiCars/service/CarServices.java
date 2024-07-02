@@ -48,18 +48,4 @@ public class CarServices {
         dto.setValor(car.getModel().getFipe_value());
         return dto;
     }
-    private CarDto convertToDTOcreate(Car car) {
-        CarDto dto = new CarDto();
-        dto.setId(car.getId());
-        dto.setTimestamp_cadastro(car.getRegister_date().getTime() / 1000L);
-        dto.setModelo_id(car.getModel().getId());
-        dto.setAno(car.getYear());
-        dto.setCombustivel(car.getGas_type());
-        dto.setNum_portas(car.getNum_Doors());
-        dto.setCor(car.getColor());
-        dto.setNome_modelo(car.getModel().getName());
-        dto.setValor(car.getModel().getFipe_value());
-        return dto;
-    }
-
 }
