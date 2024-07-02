@@ -1,11 +1,12 @@
 package WsWork.example.apiCars.Controller;
 
+import WsWork.example.apiCars.DTO.ModelDto;
 import WsWork.example.apiCars.Entity.Model;
 import WsWork.example.apiCars.service.ModelServices;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/models")
 public class ModelController {
@@ -19,7 +20,7 @@ public class ModelController {
       return modelServices.create(model);
     }
     @GetMapping
-    public List<Model> listAllModels(){
+    public List<ModelDto> listAllModels(){
       return modelServices.listAllModels();
     }
     @PutMapping
