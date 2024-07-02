@@ -1,11 +1,13 @@
 package WsWork.example.apiCars.service;
 
 import WsWork.example.apiCars.Entity.Model;
+import WsWork.example.apiCars.DTO.ModelDto;
 import WsWork.example.apiCars.Repository.ModelRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ModelServices {
@@ -20,8 +22,8 @@ public class ModelServices {
         return modelRepository.save(model);
     };
 
-    public List<Model> listAllModels(){
-        return modelRepository.findAll();
+    public List<ModelDto> listAllModels(){
+        return modelRepository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
     public Model updateModel(Model model) {
@@ -35,5 +37,13 @@ public class ModelServices {
     }
     public void deleteModel(long id){
         modelRepository.deleteById(id);
+    }
+    private ModelDto convertToDto(Model model){
+        ModelDto  dto = new ModelDto();
+        dto.setId(model.getId());
+        dto.setMarca_id(model.getBrand().getId());
+        dto.setNome(model.getName());
+        dto.setValor_fipe(model.getFipe_value());
+        return dto;
     }
 }

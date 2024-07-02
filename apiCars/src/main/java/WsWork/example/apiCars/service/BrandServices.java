@@ -1,11 +1,13 @@
 package WsWork.example.apiCars.service;
 
+import WsWork.example.apiCars.DTO.BrandDto;
 import WsWork.example.apiCars.Entity.Brand;
 import WsWork.example.apiCars.Repository.BrandRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BrandServices {
@@ -19,8 +21,8 @@ public class BrandServices {
         return brandRepository.save(brand);
     };
 
-    public List<Brand> listAllBrands(){
-       return brandRepository.findAll();
+    public List<BrandDto> listAllBrands(){
+       return brandRepository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
     public Brand updateBrand(Brand brand) {
@@ -34,5 +36,11 @@ public class BrandServices {
     }
     public void deleteBrand(long id){
         brandRepository.deleteById(id);
+    }
+    private BrandDto convertToDto(Brand brand){
+        BrandDto dto = new BrandDto();
+        dto.setId(brand.getId());
+        dto.setNome_marca(brand.getName_brand());
+        return dto;
     }
 }
