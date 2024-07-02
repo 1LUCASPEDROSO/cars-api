@@ -1,7 +1,6 @@
 package WsWork.example.apiCars.Entity;
 
 import jakarta.persistence.*;
-import jdk.jfr.Timestamp;
 
 import java.util.Date;
 
