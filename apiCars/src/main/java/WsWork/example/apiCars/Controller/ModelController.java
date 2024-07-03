@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping ("/models")
+@RequestMapping ("/models.json")
 public class ModelController {
     ModelServices modelServices;
 
