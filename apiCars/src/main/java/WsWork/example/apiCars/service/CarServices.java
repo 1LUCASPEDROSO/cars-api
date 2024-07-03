@@ -36,9 +36,10 @@ public class CarServices {
         carRepository.deleteById(id);
     }
     private CarDto convertToDTO(Car car) {
+        // baseado no modelo de exemplo dos dados fou ultilizado DTO para alinhar e corresponder ao modelo, bem como para tratamento do valor Date para timestamp unix
         CarDto dto = new CarDto();
         dto.setId(car.getId());
-        dto.setTimestamp_cadastro(car.getRegister_date().getTime() / 1000L);
+        dto.setTimestamp_cadastro(car.getRegister_date().getTime() / 1000L); // conversão de date para timestamp unix
         dto.setModelo_id(car.getModel().getId());
         dto.setAno(car.getYear());
         dto.setCombustivel(car.getGas_type());
