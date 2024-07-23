@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class BrandServices {
-    private BrandRepository brandRepository;
+    private final BrandRepository brandRepository;
 
-    public BrandServices(BrandRepository brandRepository) {
+    private BrandServices(BrandRepository brandRepository) {
         this.brandRepository = brandRepository;
     }
 

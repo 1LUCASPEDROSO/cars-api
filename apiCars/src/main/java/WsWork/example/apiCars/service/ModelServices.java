@@ -14,7 +14,7 @@ public class ModelServices {
 
     private final ModelRepository modelRepository;
 
-    public ModelServices(ModelRepository modelRepository) {
+    private ModelServices(ModelRepository modelRepository) {
         this.modelRepository = modelRepository;
     }
 

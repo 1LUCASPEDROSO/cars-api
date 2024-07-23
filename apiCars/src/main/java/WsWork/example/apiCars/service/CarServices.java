@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class CarServices {
-    CarRepository carRepository;
+     private final CarRepository carRepository;
 
-    public CarServices(CarRepository carRepository) {
+    private CarServices(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 
