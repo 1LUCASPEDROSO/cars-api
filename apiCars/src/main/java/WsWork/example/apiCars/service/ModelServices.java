@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Service
 public class ModelServices {
 
-    private ModelRepository modelRepository;
+    private final ModelRepository modelRepository;
 
     public ModelServices(ModelRepository modelRepository) {
         this.modelRepository = modelRepository;
@@ -41,9 +41,9 @@ public class ModelServices {
     private ModelDto convertToDto(Model model){
         ModelDto  dto = new ModelDto();
         dto.setId(model.getId());
-        dto.setMarca_id(model.getBrand().getId());
-        dto.setNome(model.getName());
-        dto.setValor_fipe(model.getFipe_value());
+        dto.setBrand_id(model.getBrand().getId());
+        dto.setName(model.getName());
+        dto.setFipe_value(model.getFipe_value());
         return dto;
     }
 }

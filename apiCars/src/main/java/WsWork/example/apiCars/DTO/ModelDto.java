@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 public class ModelDto {
     private long id;
-    private long marca_id;
-    private String nome;
-    private BigDecimal valor_fipe;
+    private long brand_id;
+    private String name;
+    private BigDecimal fipe_value;
 
     public long getId() {
         return id;
@@ -16,27 +16,27 @@ public class ModelDto {
         this.id = id;
     }
 
-    public long getMarca_id() {
-        return marca_id;
+    public long getBrand_id() {
+        return brand_id;
     }
 
-    public void setMarca_id(long marca_id) {
-        this.marca_id = marca_id;
+    public void setBrand_id(long brand_id) {
+        this.brand_id = brand_id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public BigDecimal getValor_fipe() {
-        return valor_fipe;
+    public BigDecimal getFipe_value() {
+        return fipe_value;
     }
 
-    public void setValor_fipe(BigDecimal valor_fipe) {
-        this.valor_fipe = valor_fipe;
+    public void setFipe_value(BigDecimal fipe_value) {
+        this.fipe_value = fipe_value;
     }
 }
