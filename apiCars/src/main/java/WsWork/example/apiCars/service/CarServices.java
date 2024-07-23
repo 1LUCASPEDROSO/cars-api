@@ -39,14 +39,14 @@ public class CarServices {
         // baseado no modelo de exemplo dos dados fou ultilizado DTO para alinhar e corresponder ao modelo, bem como para tratamento do valor Date para timestamp unix
         CarDto dto = new CarDto();
         dto.setId(car.getId());
-        dto.setTimestamp_cadastro(car.getRegister_date().getTime() / 1000L); // conversão de date para timestamp unix
-        dto.setModelo_id(car.getModel().getId());
-        dto.setAno(car.getYear());
-        dto.setCombustivel(car.getGas_type());
-        dto.setNum_portas(car.getNum_Doors());
-        dto.setCor(car.getColor());
-        dto.setNome_modelo(car.getModel().getName());
-        dto.setValor(car.getModel().getFipe_value());
+        dto.setCadaster_timestamp(car.getRegister_date().getTime() / 1000L); // conversão de date para timestamp unix
+        dto.setModel_id(car.getModel().getId());
+        dto.setYear(car.getYear());
+        dto.setGasType(car.getGas_type());
+        dto.setNum_doors(car.getNum_Doors());
+        dto.setColor(car.getColor());
+        dto.setModel_name(car.getModel().getName());
+        dto.setValue(car.getModel().getFipe_value());
         return dto;
     }
 }

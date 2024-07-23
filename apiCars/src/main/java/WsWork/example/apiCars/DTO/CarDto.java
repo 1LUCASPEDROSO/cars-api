@@ -5,15 +5,15 @@ import java.util.Date;
 
 public class CarDto {
     private long id;
-    private long timestamp_cadastro;
-    private Date date_cadastro;
-    private long modelo_id;
-    private Integer ano;
-    private String combustivel;
-    private Integer num_portas;
-    private String cor;
-    private String nome_modelo;
-    private BigDecimal valor;
+    private long cadaster_timestamp;
+    private Date cadaster_date;
+    private long model_id;
+    private Integer year;
+    private String gasType;
+    private Integer num_doors;
+    private String color;
+    private String model_name;
+    private BigDecimal value;
 
     public long getId() {
         return id;
@@ -23,77 +23,76 @@ public class CarDto {
         this.id = id;
     }
 
-    public long getTimestamp_cadastro() {
-        return timestamp_cadastro;
+
+    public long getCadaster_timestamp() {
+        return cadaster_timestamp;
     }
 
-    public void setTimestamp_cadastro(long timestamp_cadastro) {
-        this.timestamp_cadastro = timestamp_cadastro;
+    public void setCadaster_timestamp(long cadaster_timestamp) {
+        this.cadaster_timestamp = cadaster_timestamp;
     }
 
-    public Date getDate_cadastro() {
-        return date_cadastro;
+    public Date getCadaster_date() {
+        return cadaster_date;
     }
 
-    public void setDate_cadastro(Date date_cadastro) {
-        this.date_cadastro = date_cadastro;
+    public void setCadaster_date(Date cadaster_date) {
+        this.cadaster_date = cadaster_date;
     }
 
-    public long getModelo_id() {
-        return modelo_id;
+    public long getModel_id() {
+        return model_id;
     }
 
-    public void setModelo_id(long modelo_id) {
-        this.modelo_id = modelo_id;
+    public void setModel_id(long model_id) {
+        this.model_id = model_id;
     }
 
-    public Integer getAno() {
-        return ano;
+    public Integer getYear() {
+        return year;
     }
 
-    public void setAno(Integer ano) {
-        this.ano = ano;
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
-    public String getCombustivel() {
-        return combustivel;
+    public String getGasType() {
+        return gasType;
     }
 
-    public void setCombustivel(String combustivel) {
-        this.combustivel = combustivel;
+    public void setGasType(String gasType) {
+        this.gasType = gasType;
     }
 
-    public Integer getNum_portas() {
-        return num_portas;
+    public Integer getNum_doors() {
+        return num_doors;
     }
 
-    public void setNum_portas(Integer num_portas) {
-        this.num_portas = num_portas;
+    public void setNum_doors(Integer num_doors) {
+        this.num_doors = num_doors;
     }
 
-    public String getCor() {
-        return cor;
+    public String getColor() {
+        return color;
     }
 
-    public void setCor(String cor) {
-        this.cor = cor;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public String getNome_modelo() {
-        return nome_modelo;
+    public String getModel_name() {
+        return model_name;
     }
 
-    public void setNome_modelo(String nome_modelo) {
-        this.nome_modelo = nome_modelo;
+    public void setModel_name(String model_name) {
+        this.model_name = model_name;
     }
 
-    public BigDecimal getValor() {
-        return valor;
+    public BigDecimal getValue() {
+        return value;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
+    public void setValue(BigDecimal value) {
+        this.value = value;
     }
-
-
 }
