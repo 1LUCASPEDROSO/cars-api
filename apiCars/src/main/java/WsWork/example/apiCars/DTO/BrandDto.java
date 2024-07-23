@@ -2,7 +2,7 @@ package WsWork.example.apiCars.DTO;
 
 public class BrandDto {
     private long id;
-    private String nome_marca;
+    private String name;
 
     public long getId() {
         return id;
@@ -12,11 +12,11 @@ public class BrandDto {
         this.id = id;
     }
 
-    public String getNome_marca() {
-        return nome_marca;
+    public String getName() {
+        return name;
     }
 
-    public void setNome_marca(String nome_marca) {
-        this.nome_marca = nome_marca;
+    public void setName(String name) {
+        this.name = name;
     }
 }

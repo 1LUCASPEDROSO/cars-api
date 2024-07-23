@@ -40,7 +40,7 @@ public class BrandServices {
     private BrandDto convertToDto(Brand brand){
         BrandDto dto = new BrandDto();
         dto.setId(brand.getId());
-        dto.setNome_marca(brand.getName_brand());
+        dto.setName(brand.getName_brand());
         return dto;
     }
 }
