@@ -18,8 +18,8 @@ public class ModelController {
         this.modelServices = modelServices;
     }
     @PostMapping
-    public Model createModel( @RequestBody Model model){
-      return modelServices.create(model);
+    public Model createModel( @RequestBody ModelDto dto){
+      return modelServices.convertToEntity(dto);
     }
     @GetMapping
     public List<ModelDto> listAllModels(){

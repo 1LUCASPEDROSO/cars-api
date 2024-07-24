@@ -1,5 +1,7 @@
 package WsWork.example.apiCars.DTO;
 
+import WsWork.example.apiCars.Entity.Model;
+
 import java.math.BigDecimal;
 
 public class ModelDto {
@@ -11,7 +13,6 @@ public class ModelDto {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }

@@ -1,7 +1,9 @@
 package WsWork.example.apiCars.service;
 
+import WsWork.example.apiCars.Entity.Brand;
 import WsWork.example.apiCars.Entity.Model;
 import WsWork.example.apiCars.DTO.ModelDto;
+import WsWork.example.apiCars.Repository.BrandRepository;
 import WsWork.example.apiCars.Repository.ModelRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +15,11 @@ import java.util.stream.Collectors;
 public class ModelServices {
 
     private final ModelRepository modelRepository;
+    private final BrandRepository brandRepository ;
 
-    private ModelServices(ModelRepository modelRepository) {
+    public ModelServices(ModelRepository modelRepository, BrandRepository brandRepository) {
         this.modelRepository = modelRepository;
+        this.brandRepository = brandRepository;
     }
 
     public Model create(Model model){
@@ -45,5 +49,15 @@ public class ModelServices {
         dto.setName(model.getName());
         dto.setFipe_value(model.getFipe_value());
         return dto;
+    }
+    public Model convertToEntity(ModelDto dto) {
+        Brand brand = brandRepository.findById(dto.getBrand_id()).orElseThrow(()
+         -> new RuntimeException("Brand not found with id: " + dto.getBrand_id()));
+        Model model = new Model();
+        model.setId(dto.getId());
+        model.setBrand(brand);
+        model.setName(dto.getName());
+        model.setFipe_value(dto.getFipe_value());
+        return create(model);
     }
 }

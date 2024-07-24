@@ -49,4 +49,10 @@ public class Model {
     public void setFipe_value(BigDecimal fipe_value) {
         this.fipe_value = fipe_value;
     }
+
+    public Model(Brand brand, String name, BigDecimal fipe_value) {
+        this.brand = brand;
+        this.name = name;
+        this.fipe_value = fipe_value;
+    }
 }
