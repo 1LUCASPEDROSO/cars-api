@@ -1,5 +1,6 @@
 package WsWork.example.apiCars.service;
 
+import WsWork.example.apiCars.DTO.RequestDTOModel;
 import WsWork.example.apiCars.Entity.Brand;
 import WsWork.example.apiCars.Entity.Model;
 import WsWork.example.apiCars.DTO.ModelDto;
@@ -22,10 +23,15 @@ public class ModelServices {
         this.brandRepository = brandRepository;
     }
 
-    public Model create(Model model){
-        return modelRepository.save(model);
-    };
-
+    public Model create(RequestDTOModel dto){
+            Brand brand = brandRepository.findById(dto.brand_id())
+                    .orElseThrow(() -> new RuntimeException("Brand not found with id: " + dto.brand_id()));
+            Model newModel = new Model();
+            newModel.setBrand(brand);
+            newModel.setName(dto.name());
+            newModel.setFipe_value(dto.fipe_value());
+            return modelRepository.save(newModel);
+    }
     public List<ModelDto> listAllModels(){
         return modelRepository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
     }
@@ -50,7 +56,7 @@ public class ModelServices {
         dto.setFipe_value(model.getFipe_value());
         return dto;
     }
-    public Model convertToEntity(ModelDto dto) {
+    /*public Model convertToEntity(ModelDto dto) {
         Brand brand = brandRepository.findById(dto.getBrand_id()).orElseThrow(()
          -> new RuntimeException("Brand not found with id: " + dto.getBrand_id()));
         Model model = new Model();
@@ -58,6 +64,6 @@ public class ModelServices {
         model.setBrand(brand);
         model.setName(dto.getName());
         model.setFipe_value(dto.getFipe_value());
-        return create(model);
-    }
+        return create(ModelDto);
+    }*/
 }

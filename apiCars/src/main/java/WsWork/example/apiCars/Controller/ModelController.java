@@ -1,6 +1,7 @@
 package WsWork.example.apiCars.Controller;
 
 import WsWork.example.apiCars.DTO.ModelDto;
+import WsWork.example.apiCars.DTO.RequestDTOModel;
 import WsWork.example.apiCars.Entity.Model;
 import WsWork.example.apiCars.service.ModelServices;
 import org.springframework.http.HttpStatus;
@@ -18,8 +19,8 @@ public class ModelController {
         this.modelServices = modelServices;
     }
     @PostMapping
-    public Model createModel( @RequestBody ModelDto dto){
-      return modelServices.convertToEntity(dto);
+    public Model createModel( @RequestBody RequestDTOModel dto){
+      return modelServices.create(dto);
     }
     @GetMapping
     public List<ModelDto> listAllModels(){
