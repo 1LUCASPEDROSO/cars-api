@@ -1,6 +1,7 @@
 package WsWork.example.apiCars.service;
 
 import WsWork.example.apiCars.DTO.RequestDTOModel;
+import WsWork.example.apiCars.DTO.ResponseDTOModel;
 import WsWork.example.apiCars.Entity.Brand;
 import WsWork.example.apiCars.Entity.Model;
 import WsWork.example.apiCars.DTO.ModelDto;
@@ -36,13 +37,19 @@ public class ModelServices {
         return modelRepository.findAll().stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
-    public Model updateModel(Model model) {
-        Optional<Model> existModel = modelRepository.findById(model.getId());
+    public Model updateModel(RequestDTOModel dto) {
+        Optional<Model> existModel = modelRepository.findById(dto.id());
         if (existModel.isPresent()){
-            return modelRepository.save(model);
+            Brand brand = brandRepository.findById(dto.brand_id())
+                    .orElseThrow(() -> new RuntimeException("Brand not found with id: " + dto.brand_id()));
+            Model updatedModel = existModel.get();
+            updatedModel.setBrand(brand);
+            updatedModel.setName(dto.name());
+            updatedModel.setFipe_value(dto.fipe_value());
+            return modelRepository.save(updatedModel);
         }
         else {
-            throw new RuntimeException("Model not found with id: " + model.getId());
+            throw new RuntimeException("Model not found with id: " + dto.id());
         }
     }
     public void deleteModel(long id){
