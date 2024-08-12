@@ -27,8 +27,8 @@ public class ModelController {
       return modelServices.listAllModels();
     }
     @PutMapping
-    public Model updateModel(@RequestBody Model model){
-       return modelServices.updateModel(model);
+    public Model updateModel(@RequestBody RequestDTOModel dto){
+       return modelServices.updateModel(dto);
     }
     @DeleteMapping("{id}")
     public void deleteModel(@PathVariable Long id){
