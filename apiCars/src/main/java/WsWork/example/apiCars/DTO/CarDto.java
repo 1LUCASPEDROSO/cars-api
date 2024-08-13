@@ -6,7 +6,6 @@ import java.util.Date;
 public class CarDto {
     private long id;
     private long cadaster_timestamp;
-    private Date cadaster_date;
     private long model_id;
     private Integer year;
     private String gasType;
@@ -31,15 +30,7 @@ public class CarDto {
     public void setCadaster_timestamp(long cadaster_timestamp) {
         this.cadaster_timestamp = cadaster_timestamp;
     }
-
-    public Date getCadaster_date() {
-        return cadaster_date;
-    }
-
-    public void setCadaster_date(Date cadaster_date) {
-        this.cadaster_date = cadaster_date;
-    }
-
+    
     public long getModel_id() {
         return model_id;
     }
