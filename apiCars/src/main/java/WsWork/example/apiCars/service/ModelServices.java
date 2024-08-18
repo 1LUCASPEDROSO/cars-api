@@ -1,7 +1,6 @@
 package WsWork.example.apiCars.service;
 
 import WsWork.example.apiCars.DTO.RequestDTOModel;
-import WsWork.example.apiCars.DTO.ResponseDTOModel;
 import WsWork.example.apiCars.Entity.Brand;
 import WsWork.example.apiCars.Entity.Model;
 import WsWork.example.apiCars.DTO.ModelDto;
@@ -63,14 +62,4 @@ public class ModelServices {
         dto.setFipe_value(model.getFipe_value());
         return dto;
     }
-    /*public Model convertToEntity(ModelDto dto) {
-        Brand brand = brandRepository.findById(dto.getBrand_id()).orElseThrow(()
-         -> new RuntimeException("Brand not found with id: " + dto.getBrand_id()));
-        Model model = new Model();
-        model.setId(dto.getId());
-        model.setBrand(brand);
-        model.setName(dto.getName());
-        model.setFipe_value(dto.getFipe_value());
-        return create(ModelDto);
-    }*/
 }
