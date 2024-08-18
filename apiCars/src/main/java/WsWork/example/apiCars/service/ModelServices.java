@@ -26,10 +26,7 @@ public class ModelServices {
     public Model create(RequestDTOModel dto){
             Brand brand = brandRepository.findById(dto.brand_id())
                     .orElseThrow(() -> new RuntimeException("Brand not found with id: " + dto.brand_id()));
-            Model newModel = new Model();
-            newModel.setBrand(brand);
-            newModel.setName(dto.name());
-            newModel.setFipe_value(dto.fipe_value());
+            Model newModel = new Model (brand, dto.name(), dto.fipe_value());
             return modelRepository.save(newModel);
     }
     public List<ModelDto> listAllModels(){
