@@ -3,6 +3,8 @@ package WsWork.example.apiCars.Controller;
 import WsWork.example.apiCars.DTO.ModelDTO;
 import WsWork.example.apiCars.Entity.Model;
 import WsWork.example.apiCars.service.ModelServices;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,16 +18,19 @@ public class ModelController {
         this.modelServices = modelServices;
     }
     @PostMapping
-    public Model createModel( @RequestBody ModelDTO dto){
-      return modelServices.create(dto);
+    public ResponseEntity<Model> createModel( @RequestBody ModelDTO dto){
+        Model model = modelServices.create(dto);
+      return ResponseEntity.status(HttpStatus.CREATED).body(model);
     }
     @GetMapping
-    public List<ModelDTO> listAllModels(){
-      return modelServices.listAllModels();
+    public ResponseEntity<List<ModelDTO>> listAllModels() {
+        List<ModelDTO> models = modelServices.listAllModels();
+        return ResponseEntity.ok(models);
     }
     @PutMapping
-    public Model updateModel(@RequestBody ModelDTO dto){
-       return modelServices.updateModel(dto);
+    public ResponseEntity<Model> updateModel(@RequestBody ModelDTO dto){
+        Model updetedModel = modelServices.updateModel(dto);
+       return ResponseEntity.ok(updetedModel);
     }
     @DeleteMapping("{id}")
     public void deleteModel(@PathVariable Long id){
