@@ -1,11 +1,8 @@
 package WsWork.example.apiCars.Controller;
 
-import WsWork.example.apiCars.DTO.ModelDto;
-import WsWork.example.apiCars.DTO.RequestDTOModel;
+import WsWork.example.apiCars.DTO.ModelDTO;
 import WsWork.example.apiCars.Entity.Model;
 import WsWork.example.apiCars.service.ModelServices;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,15 +16,15 @@ public class ModelController {
         this.modelServices = modelServices;
     }
     @PostMapping
-    public Model createModel( @RequestBody RequestDTOModel dto){
+    public Model createModel( @RequestBody ModelDTO dto){
       return modelServices.create(dto);
     }
     @GetMapping
-    public List<ModelDto> listAllModels(){
+    public List<ModelDTO> listAllModels(){
       return modelServices.listAllModels();
     }
     @PutMapping
-    public Model updateModel(@RequestBody RequestDTOModel dto){
+    public Model updateModel(@RequestBody ModelDTO dto){
        return modelServices.updateModel(dto);
     }
     @DeleteMapping("{id}")
