@@ -1,8 +1,10 @@
 package WsWork.example.apiCars.Controller;
 
-import WsWork.example.apiCars.DTO.CarDto;
+import WsWork.example.apiCars.DTO.CarDTO;
 import WsWork.example.apiCars.Entity.Car;
 import WsWork.example.apiCars.service.CarServices;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,16 +19,19 @@ public class CarController {
     }
 
     @PostMapping
-    public Car create(@RequestBody Car car){
-        return carService.create(car);
+    public ResponseEntity<Car> create(@RequestBody CarDTO dto){
+        Car newCar = carService.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newCar);
     }
     @GetMapping
-    public List<CarDto> listAllCars(){
-        return carService.listAllCars();
+    public ResponseEntity<List<CarDTO>> listAllCars(){
+        List<CarDTO> cars = carService.listAllCars();
+        return ResponseEntity.ok(cars);
     }
     @PutMapping
-    public Car updateCar(Car car){
-        return carService.updateCar(car);
+    public ResponseEntity<Car> updateCar(CarDTO dto){
+        Car updetedCar = carService.updateCar(dto);
+        return ResponseEntity.ok(updetedCar);
     }
     @DeleteMapping("{id}")
     public void deleteCar(@PathVariable long id){
