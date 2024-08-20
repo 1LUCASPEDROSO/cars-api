@@ -24,6 +24,15 @@ public class Car {
     public Car() {
     }
 
+    public Car(Date register_date, Model model, Integer year, String gas_type, Integer num_Doors, String color) {
+        this.register_date = register_date;
+        this.model = model;
+        this.year = year;
+        this.gas_type = gas_type;
+        this.num_Doors = num_Doors;
+        this.color = color;
+    }
+
     public long getId() {
         return id;
     }
