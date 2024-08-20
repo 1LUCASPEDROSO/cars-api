@@ -1,9 +1,13 @@
 package WsWork.example.apiCars.service;
 
-import WsWork.example.apiCars.DTO.CarDto;
+import WsWork.example.apiCars.DTO.CarDTO;
+import WsWork.example.apiCars.Entity.Model;
 import WsWork.example.apiCars.Repository.CarRepository;
 import WsWork.example.apiCars.Entity.Car;
+import WsWork.example.apiCars.Repository.ModelRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -11,42 +15,63 @@ import java.util.stream.Collectors;
 @Service
 public class CarServices {
      private final CarRepository carRepository;
+     private final ModelRepository modelRepository;
 
-    private CarServices(CarRepository carRepository) {
+    public CarServices(CarRepository carRepository, ModelRepository modelRepository) {
         this.carRepository = carRepository;
+        this.modelRepository = modelRepository;
     }
 
-    public Car create(Car car){
-        return carRepository.save(car);
+    public Car create(CarDTO dto){
+        Model model = modelRepository.findById(dto.modelId()).
+                orElseThrow(() -> new RuntimeException("Model not found with id: " + dto.modelId()));
+        Car newCar = new Car(
+                dto.registerDate(),
+                model,
+                dto.year(),
+                dto.gasType(),
+                dto.numDors(),
+                dto.color()
+        );
+        return carRepository.save(newCar);
     }
 
-    public List<CarDto> listAllCars(){
+    public List<CarDTO> listAllCars(){
         return carRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
-    public Car updateCar(Car car){
-        Optional<Car> existCar = carRepository.findById(car.getId());
+    public Car updateCar(CarDTO dto){
+        Optional<Car> existCar = carRepository.findById(dto.id());
         if (existCar.isPresent()){
-            return carRepository.save(car);
+            Model model = modelRepository.findById(dto.modelId()).
+                    orElseThrow(() -> new RuntimeException("Model not found with id: " + dto.modelId()));
+            Car updatedCar = existCar.get();
+            updatedCar.setRegister_date(dto.registerDate());
+            updatedCar.setModel(model);
+            updatedCar.setYear(dto.year());
+            updatedCar.setGas_type(dto.gasType());
+            updatedCar.setNum_Doors(dto.numDors());
+            return carRepository.save(updatedCar);
         }
         else {
-            throw new RuntimeException("Car not found with id: " + car.getId());
+            throw new RuntimeException("Car not found with id: " + dto.id());
         }
     }
     public void deleteCar(long id){
         carRepository.deleteById(id);
     }
-    private CarDto convertToDTO(Car car) {
-        // baseado no modelo de exemplo dos dados fou ultilizado DTO para alinhar e corresponder ao modelo, bem como para tratamento do valor Date para timestamp unix
-        CarDto dto = new CarDto();
-        dto.setId(car.getId());
-        dto.setCadaster_timestamp(car.getRegister_date().getTime() / 1000L); // conversão de date para timestamp unix
-        dto.setModel_id(car.getModel().getId());
-        dto.setYear(car.getYear());
-        dto.setGasType(car.getGas_type());
-        dto.setNum_doors(car.getNum_Doors());
-        dto.setColor(car.getColor());
-        dto.setModel_name(car.getModel().getName());
-        dto.setValue(car.getModel().getFipe_value());
-        return dto;
+
+    private CarDTO convertToDTO(Car car) {
+        long timeStampCadaster = car.getRegister_date().getTime() / 1000L;
+       return new CarDTO(
+               car.getId(),
+               car.getRegister_date(),
+               car.getModel().getId(),
+               car.getYear(),
+               car.getGas_type(),
+               car.getNum_Doors(),
+               car.getColor(),
+               car.getModel().getName(),
+               car.getModel().getFipe_value()
+       );
     }
 }
