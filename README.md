@@ -10,7 +10,7 @@ Documento ApiCars
 Este projeto foi construído usando java 17 com spring boot versão 3.1.1 com
 postgreSQL e estruturado seguindo o padrão arquitetural MVC
 (Model-View-Controller), onde cada camada desempenha um papel na organização e
-na funcionalidade da aplicação que foi Divido em Entitys, Repository, Services, DTO
+na funcionalidade da aplicação que foi Dividido em Entity, Repository, Service, DTO
 (data transfer object) e Controller para expor endpoints rest.
 
 Entity: As (Entitys) representam as tabelas no banco de dados. Elas são
