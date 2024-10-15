@@ -1,4 +1,4 @@
-# WsWork-api
+# Cars-api
  Projeto de API Rest usando DTO pra testes
 
 ## como acessar documento API SWAGGER
@@ -81,4 +81,4 @@ Spring Web
 Spring-devtools
 postgreSQL
 
-Repositório no GitHub: https://github.com/1LUCASPEDROSO/WsWork-api
+Repositório no GitHub: https://github.com/1LUCASPEDROSO/cars-api
